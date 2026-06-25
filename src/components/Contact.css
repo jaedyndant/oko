@@ -1,0 +1,122 @@
+
+.contact {
+  background: var(--bg-dark);
+  padding: clamp(80px, 12vw, 180px) clamp(24px, 6vw, 120px) 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 8vw, 120px);
+  flex: 1;
+}
+
+.contact-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 32px;
+}
+
+.contact-heading {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 72px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.contact-accent {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.contact-link {
+  font-family: var(--sans);
+  font-size: clamp(16px, 2vw, 22px);
+  font-weight: 400;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: color 0.3s ease, border-color 0.3s ease;
+  width: 100%;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.contact-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.06);
+  margin: 8px 0;
+}
+
+.contact-socials {
+  display: flex;
+  gap: 24px;
+  padding: 20px 0;
+}
+
+.contact-socials a {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  transition: color 0.3s ease;
+}
+
+.contact-socials a:hover {
+  color: var(--fg);
+}
+
+.contact-footer p {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.4);
+}
+
+.contact-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 80px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.contact-logo {
+  font-family: var(--serif);
+  font-size: 48px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.08);
+}
+
+.contact-copy {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.2);
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+}
