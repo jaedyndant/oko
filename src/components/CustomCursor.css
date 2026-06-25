@@ -1,0 +1,93 @@
+/* ─── Custom Cursor ─── */
+
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--fg, #fafafa);
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  will-change: transform, width, height;
+  transition:
+    width 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+    height 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+    background 0.3s ease,
+    opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ─── View label inside cursor ─── */
+.custom-cursor__label {
+  font-family: var(--sans, 'Josefin Sans', sans-serif);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bg-dark, #0a0a0a);
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+    transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ─── States ─── */
+
+/* Hovering links & buttons → 48px ring */
+.custom-cursor--link {
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: 1.5px solid var(--fg, #fafafa);
+}
+
+/* Hovering data-cursor="view" → 60px filled with label */
+.custom-cursor--view {
+  width: 60px;
+  height: 60px;
+  background: var(--accent, #c4a97d);
+  mix-blend-mode: normal;
+}
+
+.custom-cursor--view .custom-cursor__label {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Clicking → shrink to 6px */
+.custom-cursor--clicking {
+  width: 6px;
+  height: 6px;
+}
+
+/* ─── Hide on touch devices ─── */
+.custom-cursor--hidden {
+  opacity: 0 !important;
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* Hide default cursor site-wide (desktop only) */
+@media (hover: hover) and (pointer: fine) {
+  html,
+  body,
+  a,
+  button,
+  [data-cursor] {
+    cursor: none !important;
+  }
+}

@@ -1,0 +1,137 @@
+
+.work-page {
+  min-height: 100vh;
+  padding: 160px clamp(24px, 6vw, 120px) 80px;
+}
+
+.work-header {
+  margin-bottom: 80px;
+}
+
+.work-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 24px;
+}
+
+.work-heading {
+  font-family: var(--serif);
+  font-size: clamp(48px, 8vw, 120px);
+  font-weight: 400;
+  line-height: 1.05;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.work-count {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.1em;
+}
+
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.work-card {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  cursor: pointer;
+}
+
+.work-card--wide {
+  grid-column: span 2;
+}
+
+.work-card--tall .work-card-img {
+  aspect-ratio: 3/4;
+}
+
+.work-card--normal .work-card-img {
+  aspect-ratio: 4/3;
+}
+
+.work-card--wide .work-card-img {
+  aspect-ratio: 21/9;
+}
+
+.work-card-img {
+  overflow: hidden;
+}
+
+.work-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-card:hover .work-card-img img {
+  transform: scale(1.05);
+}
+
+.work-card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 32px;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.work-card:hover .work-card-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.work-card-cat {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.work-card-title {
+  font-family: var(--serif);
+  font-size: clamp(20px, 2.5vw, 32px);
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+
+.work-card-loc {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.5);
+}
+
+.work-card-num {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-family: var(--serif);
+  font-size: 14px;
+  color: rgba(255,255,255,0.15);
+}
+
+@media (max-width: 768px) {
+  .work-grid { grid-template-columns: 1fr; }
+  .work-card--wide { grid-column: span 1; }
+  .work-card-info { opacity: 1; transform: none; }
+}

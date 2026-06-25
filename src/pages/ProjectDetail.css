@@ -1,0 +1,224 @@
+
+.pd-hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.pd-hero-img {
+  position: absolute;
+  inset: -20%;
+}
+
+.pd-hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pd-hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 40%, rgba(0,0,0,0.7));
+}
+
+.pd-hero-overlay {
+  position: absolute;
+  bottom: 80px;
+  left: clamp(24px, 6vw, 120px);
+  z-index: 2;
+}
+
+.pd-cat {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.pd-title {
+  font-family: var(--serif);
+  font-size: clamp(40px, 7vw, 100px);
+  font-weight: 400;
+  line-height: 1.05;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.pd-location {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Meta strip */
+.pd-meta {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.pd-meta-item {
+  padding: 32px clamp(16px, 3vw, 40px);
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+
+.pd-meta-item:last-child { border-right: none; }
+
+.pd-meta-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.pd-meta-value {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 300;
+}
+
+/* Body */
+.pd-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 8vw, 120px);
+  padding: clamp(80px, 10vw, 160px) clamp(24px, 6vw, 120px);
+  background: var(--bg-light);
+  color: var(--fg-dark);
+}
+
+.pd-body-lead {
+  font-family: var(--serif);
+  font-size: clamp(22px, 2.5vw, 32px);
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.pd-body-text p {
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--muted-dark);
+  margin-bottom: 24px;
+}
+
+/* Gallery */
+.pd-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.pd-gallery-item { overflow: hidden; }
+
+.pd-gallery-item--full {
+  grid-column: span 2;
+}
+
+.pd-gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  aspect-ratio: 16/10;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pd-gallery-item--full img {
+  aspect-ratio: 21/9;
+}
+
+.pd-gallery-item:hover img {
+  transform: scale(1.03);
+}
+
+/* Next project */
+.pd-next {
+  display: block;
+  position: relative;
+  padding: 80px clamp(24px, 6vw, 120px);
+  min-height: 60vh;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.pd-next-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.pd-next-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 72px);
+  font-weight: 400;
+  position: relative;
+  z-index: 2;
+}
+
+.pd-next-img {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  transition: opacity 0.6s ease;
+}
+
+.pd-next:hover .pd-next-img {
+  opacity: 0.3;
+}
+
+.pd-next-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 404 */
+.pd-notfound {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.pd-notfound h1 {
+  font-family: var(--serif);
+  font-size: 32px;
+}
+
+.pd-notfound a {
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .pd-meta { grid-template-columns: repeat(2, 1fr); }
+  .pd-body { grid-template-columns: 1fr; }
+  .pd-gallery { grid-template-columns: 1fr; }
+  .pd-gallery-item--full { grid-column: span 1; }
+}

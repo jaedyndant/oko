@@ -1,0 +1,103 @@
+
+export const projects = [
+  {
+    slug: 'katsura-residence',
+    title: 'Katsura Residence',
+    location: 'Kyoto, 2023',
+    category: 'Residential',
+    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=80',
+    desc: 'A private home where interior courtyards dissolve the boundary between dwelling and garden.',
+    details: {
+      area: '340 m²',
+      year: '2023',
+      status: 'Completed',
+      team: 'Takeshi Murakami, Yuki Sato, Hana Ito',
+    },
+    body: [
+      'The Katsura Residence emerged from a simple question posed by its owners: can a house feel like a garden? Our answer was to dissolve the perimeter, replacing solid walls with sliding screens that open every room to a central courtyard.',
+      'The structure is organized around three interconnected gardens — stone, water, and moss — each visible from multiple rooms, creating a layered experience that shifts with the seasons and the time of day.',
+      'Materials were chosen for their capacity to age: exposed concrete that will darken with rain, cedar screens that will silver with sun, and copper gutters that will patina green over decades.',
+    ],
+    gallery: [
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
+      'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&q=80',
+    ],
+  },
+  {
+    slug: 'tensho-gallery',
+    title: 'Tenshō Gallery',
+    location: 'Osaka, 2022',
+    category: 'Cultural',
+    image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=1920&q=80',
+    desc: 'Exhibition space carved from a former warehouse. Raw concrete meets precision joinery.',
+    details: {
+      area: '520 m²',
+      year: '2022',
+      status: 'Completed',
+      team: 'Takeshi Murakami, Kenji Yamada',
+    },
+    body: [
+      'Tenshō occupies a 1960s industrial warehouse in Osaka\'s Kitahama district. Rather than erase its history, we chose to reveal it — stripping layers of paint to expose original concrete, then inserting new volumes of white-oiled ash that float within the raw shell.',
+      'The gallery sequence moves from compressed to expansive: a low, narrow entrance corridor opens suddenly into a double-height main hall, calibrating the visitor\'s sense of scale before they encounter the art.',
+      'Overhead, a continuous skylight runs the length of the building, washing the north wall in even, diffused light — the only illumination in the main space.',
+    ],
+    gallery: [
+      'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=800&q=80',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80',
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+    ],
+  },
+  {
+    slug: 'nami-tower',
+    title: 'Nami Office Tower',
+    location: 'Tokyo, 2024',
+    category: 'Commercial',
+    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1920&q=80',
+    desc: 'A 14-storey headquarters designed to bring nature to every floor through cascading terraces.',
+    details: {
+      area: '8,200 m²',
+      year: '2024',
+      status: 'Under Construction',
+      team: 'Full Studio',
+    },
+    body: [
+      'Nami — meaning "wave" — takes its name from the building\'s defining gesture: a continuous planted terrace that spirals from ground to roof, connecting every floor to exterior greenery.',
+      'The structural system uses a diagrid exoskeleton that eliminates interior columns, giving each floor an uninterrupted 600m² floorplate. The facade\'s angular geometry creates deep overhangs that shade the terraces while framing views of the Sumida River.',
+      'Mechanical systems are integrated into the terrace planters, using the planted surfaces for evaporative cooling and reducing the building\'s energy consumption by an estimated 35% compared to a conventional glass tower.',
+    ],
+    gallery: [
+      'https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80',
+      'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=800&q=80',
+      'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80',
+    ],
+  },
+  {
+    slug: 'suigetsu-chapel',
+    title: 'Suigetsu Chapel',
+    location: 'Naoshima, 2021',
+    category: 'Sacred',
+    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80',
+    heroImage: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1920&q=80',
+    desc: 'A meditation pavilion on the Inland Sea. Water, concrete, sky — nothing more.',
+    details: {
+      area: '85 m²',
+      year: '2021',
+      status: 'Completed',
+      team: 'Takeshi Murakami',
+    },
+    body: [
+      'Suigetsu — "moon on water" — is a chapel for contemplation built on the eastern shore of Naoshima Island. The program was radically simple: a single room for sitting, oriented toward the sea.',
+      'The building is a concrete box, open on one side. A shallow reflecting pool extends from the interior floor to the threshold, blurring the line between inside and outside. At dawn, reflected sunlight dances across the ceiling. At dusk, the pool holds the last colors of the sky.',
+      'There is no door, no furniture, no ornament. Visitors sit on the polished concrete floor. The architecture provides only a frame; nature provides the content.',
+    ],
+    gallery: [
+      'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80',
+      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80',
+      'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=800&q=80',
+    ],
+  },
+]

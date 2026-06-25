@@ -53,6 +53,10 @@
   color: var(--fg);
 }
 
+.nav-links a.active {
+  color: var(--accent);
+}
+
 @media (max-width: 768px) {
   .nav { padding: 12px 20px; gap: 20px; }
   .nav-links a { font-size: 11px; }

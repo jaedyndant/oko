@@ -1,39 +1,10 @@
 import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
+import { projects } from '../data/projects'
 import './HorizontalWork.css'
-
-const projects = [
-  {
-    title: 'Katsura Residence',
-    location: 'Kyoto, 2023',
-    category: 'Residential',
-    image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80',
-    desc: 'A private home where interior courtyards dissolve the boundary between dwelling and garden.',
-  },
-  {
-    title: 'Tenshō Gallery',
-    location: 'Osaka, 2022',
-    category: 'Cultural',
-    image: 'https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=1200&q=80',
-    desc: 'Exhibition space carved from a former warehouse. Raw concrete meets precision joinery.',
-  },
-  {
-    title: 'Nami Office Tower',
-    location: 'Tokyo, 2024',
-    category: 'Commercial',
-    image: 'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&q=80',
-    desc: 'A 14-storey headquarters designed to bring nature to every floor through cascading terraces.',
-  },
-  {
-    title: 'Suigetsu Chapel',
-    location: 'Naoshima, 2021',
-    category: 'Sacred',
-    image: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=1200&q=80',
-    desc: 'A meditation pavilion on the Inland Sea. Water, concrete, sky — nothing more.',
-  },
-]
 
 export default function HorizontalWork() {
   const sectionRef = useRef(null)
@@ -96,7 +67,7 @@ export default function HorizontalWork() {
       </div>
       <div ref={trackRef} className="hw-track">
         {projects.map((p, i) => (
-          <article key={i} className="hw-card">
+          <Link to={`/project/${p.slug}`} key={i} className="hw-card" data-cursor="view">
             <div className="hw-card-img">
               <img src={p.image} alt={p.title} loading="lazy" />
             </div>
@@ -109,7 +80,7 @@ export default function HorizontalWork() {
                 <span className="hw-card-num">0{i + 1}</span>
               </div>
             </div>
-          </article>
+          </Link>
         ))}
         {/* End spacer */}
         <div className="hw-end">
