@@ -1,39 +1,35 @@
 import { useRef, useState, useEffect } from 'react'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
 import './BentoGrid.css'
 
-function CounterCard() {
-  const ref = useRef(null)
-  useGSAP(() => {
-    const counters = ref.current.querySelectorAll('.bento-counter-num')
-    counters.forEach((el) => {
-      const target = parseInt(el.dataset.target, 10)
-      const obj = { val: 0 }
-      gsap.to(obj, {
-        val: target,
-        duration: 2.5,
-        ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none reverse' },
-        onUpdate: () => { el.textContent = Math.round(obj.val) },
-      })
-    })
-  }, { scope: ref })
+function CounterCard({ inView }) {
+  const [counts, setCounts] = useState([0, 0, 0])
+  const targets = [47, 12, 18]
+
+  useEffect(() => {
+    if (!inView) { setCounts([0, 0, 0]); return }
+    const duration = 2000
+    const start = performance.now()
+    let raf
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration)
+      const ease = 1 - Math.pow(1 - t, 3)
+      setCounts(targets.map(v => Math.round(v * ease)))
+      if (t < 1) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [inView])
 
   return (
-    <div ref={ref} className="bento-card bento-card--stats">
-      <div className="bento-stat">
-        <span className="bento-counter-num" data-target="47">0</span>
-        <span className="bento-counter-label">Projects completed</span>
-      </div>
-      <div className="bento-stat">
-        <span className="bento-counter-num" data-target="12">0</span>
-        <span className="bento-counter-label">Awards received</span>
-      </div>
-      <div className="bento-stat">
-        <span className="bento-counter-num" data-target="18">0</span>
-        <span className="bento-counter-label">Studio members</span>
-      </div>
+    <div className="bento-card bento-card--stats">
+      {targets.map((t, i) => (
+        <div key={i} className="bento-stat">
+          <span className="bento-counter-num">{counts[i]}</span>
+          <span className="bento-counter-label">
+            {['Projects completed', 'Awards received', 'Studio members'][i]}
+          </span>
+        </div>
+      ))}
     </div>
   )
 }
@@ -128,22 +124,26 @@ function ImageCard() {
 
 export default function BentoGrid() {
   const ref = useRef(null)
+  const [inView, setInView] = useState(false)
 
-  useGSAP(() => {
-    const cards = ref.current.querySelectorAll('.bento-card')
-    gsap.from(cards, {
-      y: 60,
-      opacity: 0,
-      stagger: 0.1,
-      duration: 0.8,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: ref.current,
-        start: 'top 75%',
-        toggleActions: 'play none none reverse',
+  useEffect(() => {
+    const section = ref.current
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setInView(true)
+          e.target.classList.toggle('in', e.isIntersecting)
+        })
       },
-    })
-  }, { scope: ref })
+      { threshold: 0.05 }
+    )
+
+    section.querySelectorAll('.bento-card').forEach((el) => observer.observe(el))
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section ref={ref} className="bento">
@@ -151,7 +151,7 @@ export default function BentoGrid() {
         <span>At a Glance</span>
       </div>
       <div className="bento-grid">
-        <CounterCard />
+        <CounterCard inView={inView} />
         <MaterialCard />
         <LocationCard />
         <QuoteCard />

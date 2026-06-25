@@ -20,13 +20,12 @@ html {
   color: var(--fg);
   font-family: var(--sans);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
 
-html.lenis, html.lenis body { height: auto; }
-.lenis.lenis-smooth { scroll-behavior: auto !important; }
-
-body { background: var(--bg-dark); }
+body {
+  background: var(--bg-dark);
+  overflow-x: hidden;
+}
 
 ::selection { background: var(--accent); color: var(--bg-dark); }
 

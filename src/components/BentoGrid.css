@@ -29,9 +29,24 @@
   padding: 36px;
   background: rgba(255,255,255,0.03);
   border: 1px solid rgba(255,255,255,0.04);
-  transition: background 0.4s ease, border-color 0.4s ease;
+  transition: background 0.4s ease, border-color 0.4s ease, opacity 0.7s ease, transform 0.7s ease;
   cursor: pointer;
+  opacity: 1;
+  transform: translateY(0);
 }
+
+.bento-card.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger via nth-child */
+.bento-card:nth-child(1) { transition-delay: 0s; }
+.bento-card:nth-child(2) { transition-delay: 0.08s; }
+.bento-card:nth-child(3) { transition-delay: 0.16s; }
+.bento-card:nth-child(4) { transition-delay: 0.24s; }
+.bento-card:nth-child(5) { transition-delay: 0.32s; }
+.bento-card:nth-child(6) { transition-delay: 0.4s; }
 
 .bento-card:hover {
   background: rgba(255,255,255,0.05);

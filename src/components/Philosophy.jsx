@@ -1,66 +1,42 @@
-import { useRef } from 'react'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
+import { useRef, useEffect } from 'react'
 import './Philosophy.css'
 
 export default function Philosophy() {
   const ref = useRef(null)
 
-  useGSAP(() => {
-    // Large text word reveal
-    const words = ref.current.querySelectorAll('.phil-word')
-    gsap.from(words, {
-      y: 60, opacity: 0,
-      stagger: 0.06,
-      duration: 1,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: ref.current,
-        start: 'top 70%',
-        toggleActions: 'play none none reverse',
-      },
-    })
+  useEffect(() => {
+    const section = ref.current
+    if (!section) return
 
-    // Right column
-    gsap.from('.phil-right', {
-      y: 40, opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.phil-right',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse',
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          e.target.classList.toggle('in', e.isIntersecting)
+        })
       },
-    })
+      { threshold: 0.1 }
+    )
 
-    // Divider line
-    gsap.from('.phil-divider', {
-      scaleX: 0, transformOrigin: 'left',
-      duration: 1.2, ease: 'power3.inOut',
-      scrollTrigger: {
-        trigger: '.phil-divider',
-        start: 'top 90%',
-        toggleActions: 'play none none reverse',
-      },
-    })
-  }, { scope: ref })
+    section.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
 
   const statement = "We design spaces that listen before they speak. Every material, every proportion, every threshold is placed with intention — to serve the life that will unfold within."
 
   return (
     <section ref={ref} className="phil" id="philosophy">
-      <div className="phil-label">
+      <div className="phil-label reveal">
         <span>Philosophy</span>
       </div>
       <div className="phil-grid">
-        <div className="phil-left">
+        <div className="phil-left reveal">
           <p className="phil-statement">
             {statement.split(' ').map((word, i) => (
-              <span key={i} className="phil-word">{word} </span>
+              <span key={i} className="phil-word" style={{ transitionDelay: `${i * 30}ms` }}>{word} </span>
             ))}
           </p>
         </div>
-        <div className="phil-right">
+        <div className="phil-right reveal">
           <div className="phil-divider" />
           <p className="phil-body">
             Founded in Kyoto in 2009 by Takeshi Murakami, ŌKŌ has grown from a two-person

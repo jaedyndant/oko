@@ -1,7 +1,19 @@
 
-.hw {
+/* The wrapper creates the scroll distance.
+   Height = 100vh (visible) + scrollWidth - viewportWidth (hidden scroll room).
+   We set this dynamically or use a big enough value. */
+.hw-wrapper {
   position: relative;
+  /* height set dynamically via JS */
+}
+
+.hw-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
   overflow: hidden;
+  z-index: 2;
+  background: var(--bg-dark);
 }
 
 .hw-label {

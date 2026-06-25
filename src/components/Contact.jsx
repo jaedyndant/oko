@@ -1,25 +1,25 @@
-import { useRef } from 'react'
-import gsap from 'gsap'
-import { useGSAP } from '@gsap/react'
+import { useRef, useEffect } from 'react'
 import './Contact.css'
 
 export default function Contact() {
   const ref = useRef(null)
 
-  useGSAP(() => {
-    const els = ref.current.querySelectorAll('.contact-reveal')
-    gsap.from(els, {
-      y: 50, opacity: 0,
-      stagger: 0.1,
-      duration: 0.9,
-      ease: 'power4.out',
-      scrollTrigger: {
-        trigger: ref.current,
-        start: 'top 70%',
-        toggleActions: 'play none none reverse',
+  useEffect(() => {
+    const section = ref.current
+    if (!section) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          e.target.classList.toggle('in', e.isIntersecting)
+        })
       },
-    })
-  }, { scope: ref })
+      { threshold: 0.1 }
+    )
+
+    section.querySelectorAll('.contact-reveal').forEach((el) => observer.observe(el))
+    return () => observer.disconnect()
+  }, [])
 
   return (
     <section ref={ref} className="contact" id="contact">

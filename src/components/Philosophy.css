@@ -3,10 +3,34 @@
   background: var(--bg-light);
   color: var(--fg-dark);
   padding: clamp(80px, 12vw, 180px) clamp(24px, 6vw, 120px);
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+/* Reveal system — bidirectional */
+.phil .reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.phil .reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.phil .phil-word {
+  display: inline-block;
+  margin-right: 0.3em;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.phil .reveal.in .phil-word {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .phil-label {
@@ -37,16 +61,18 @@
   letter-spacing: 0.01em;
 }
 
-.phil-word {
-  display: inline-block;
-  margin-right: 0.3em;
-}
-
 .phil-divider {
   width: 60px;
   height: 1px;
   background: var(--accent);
   margin-bottom: 32px;
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
+}
+
+.phil .reveal.in .phil-divider {
+  transform: scaleX(1);
 }
 
 .phil-body {
