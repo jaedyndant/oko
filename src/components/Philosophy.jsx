@@ -14,14 +14,14 @@ export default function Philosophy() {
           e.target.classList.toggle('in', e.isIntersecting)
         })
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     )
 
     section.querySelectorAll('.reveal').forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [])
 
-  const statement = "We design spaces that listen before they speak. Every material, every proportion, every threshold is placed with intention — to serve the life that will unfold within."
+  const statement = "We design spaces that listen before they speak. Every material, every proportion, every threshold is placed with intention \u2014 to serve the life that will unfold within."
 
   return (
     <section ref={ref} className="phil" id="philosophy">

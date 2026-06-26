@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react'
+import { useRef, useState, useEffect, useCallback } from 'react'
 import './BentoGrid.css'
 
 function CounterCard({ inView }) {
@@ -86,7 +86,7 @@ function QuoteCard() {
   return (
     <div className="bento-card bento-card--quote">
       <blockquote>
-        <p>"ŌKŌ understood what we couldn't articulate — they gave our home a soul."</p>
+        <p>"OKO understood what we couldn't articulate -- they gave our home a soul."</p>
         <footer>
           <cite>Yuki Tanaka</cite>
           <span>Katsura Residence Client</span>
@@ -123,30 +123,35 @@ function ImageCard() {
 }
 
 export default function BentoGrid() {
-  const ref = useRef(null)
+  const sectionRef = useRef(null)
   const [inView, setInView] = useState(false)
 
   useEffect(() => {
-    const section = ref.current
+    const section = sectionRef.current
     if (!section) return
+
+    const cards = section.querySelectorAll('.bento-card')
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) setInView(true)
-          e.target.classList.toggle('in', e.isIntersecting)
+        entries.forEach((entry) => {
+          const visible = entry.isIntersecting
+          setInView(visible)
+          cards.forEach((card) => card.classList.toggle('in', visible))
         })
       },
-      { threshold: 0.05 }
+      { threshold: 0.05, rootMargin: '0px 0px -40px 0px' }
     )
 
-    section.querySelectorAll('.bento-card').forEach((el) => observer.observe(el))
+    /* Observe only the section element itself */
     observer.observe(section)
+
     return () => observer.disconnect()
   }, [])
 
   return (
-    <section ref={ref} className="bento">
+    <section ref={sectionRef} className="bento">
+      <div className="bento-grain" aria-hidden="true" />
       <div className="bento-label">
         <span>At a Glance</span>
       </div>
